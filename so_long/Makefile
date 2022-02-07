@@ -1,6 +1,6 @@
 NAME  =  so_long
 
-SRCS = test.c utils.c
+SRCS = test.c utils.c testeur_map.c converter.c finder.c rander.c
 
 FLAGS = 
 

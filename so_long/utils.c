@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:33:08 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/01/20 00:58:06 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/02/04 22:44:04 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ int	countword(char const *s, char c)
 	return (count);
 }
 
-// int main()
-// {
-//     char s[] = ".ya.ss.ir.";
-//     int r = countword(s,'.');
-//     printf("%d",r);
-// }
 int	lenword(char const *s, char c)
 {
 	int	i;
