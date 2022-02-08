@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:50:57 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/02/07 20:59:32 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/02/08 20:04:15 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ void    ft_converter(t_variable *so);
 void    ft_finder(t_variable *p);
 void    ft_rander(t_variable *variable);
 int     p_check(char **p, int n, int m);
-void     c_check(char **p, int n, int m,t_map *cl);
+void    c_check(char **p, int n, int m,t_map *cl);
+int     walltest(char **p, t_map *test);
+void	initialisation(t_map *test);
+int     check_lines (char **p, t_map * test);
+void    ft_keyhok_up_left(t_variable *variable,int keycode);
+void    keyhoks_down_right(t_variable *variable, int keycode);
 #endif
 #endif
