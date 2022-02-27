@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 20:35:42 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/02/21 22:16:33 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:00:28 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 
 typedef	struct s_stack
 {
-	int top;
-	int capacity;
-	int	*items;
+	int index_stack;
+	int index_stack_temp;
+	int *a;
+	int *b;
 }t_stack;
 
 void	ft_putchar(char c);
