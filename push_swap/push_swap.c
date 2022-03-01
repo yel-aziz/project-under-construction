@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:58:53 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/02/26 13:58:50 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:24:46 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,12 +163,45 @@ void	rrr(t_stack *va)
 	rra(va);
 	rra(va);
 }
+void	ft_sort(t_stack *va,int	b)
+{
+	int	j;
 
+	j = va->index_stack_temp;
+	while (j >= 0)
+	{
+		if (va->b[j] >= b)
+		{
+			if (j == va->index_stack_temp)
+			{
+				va->index_stack += 1;
+				va->a[va->index_stack_temp] = va->b[j];
+			}
+			if (j < va->index_stack_temp)
+			{
+				if (j < (va->index_stack_temp / 2))
+				{
+					
+						rrb(va);
+						va->a[0] = va->b[j];
+					
+				}
+				
+			}
+			
+		}
+		
+		j--;
+	}
+	
+}
 int main(int ac, char **av )
 {
 	t_stack variable;
 	int i;
 	int k;
+	int	b;
+	int	j;
 	ac = 0;
 	i = 1;
 	// if (ac < 2)
@@ -182,8 +215,23 @@ int main(int ac, char **av )
 	k = 0;
 	while (av[i])
 	{
-		variable.a[k++] = ft_atoi(av[i]);
+		variable.b[k++] = ft_atoi(av[i]);
 		i++;
 	}
-	variable.index_stack = index_stack(k); 
+	variable.index_stack_temp = index_stack(k); 
+	j = variable.index_stack_temp;
+	b = 0;
+	while (j >= 0)
+	{
+		b += variable.b[j];
+		j--;
+	}
+	b = (b / k);
+	variable.index_stack = 0;
+	print_table(variable.b,variable.index_stack_temp+1);
+	printf("\n");
+	ft_sort(&variable,b);
+	print_table(variable.b,variable.index_stack_temp+1);
+	printf("\n");
+	print_table(variable.a,1);
 }
