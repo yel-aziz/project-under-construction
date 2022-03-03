@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:58:53 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/01 13:24:46 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/03 16:59:38 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ int	index_stack(int len_argument)
 // 	va->index_stack += 1;
 // }
 
-// void push_b(int *b, int a, t_stack *va)
-// {
-// 	b[va->index_stack_temp+1] = a;
-// 	va->index_stack_temp += 1;
-// }
+void push_b(int *b, int a, t_stack *va)
+{
+	b[va->index_stack_temp + 1] = a;
+	va->index_stack_temp += 1;
+}
 
 void ra(t_stack *va)
 {
@@ -163,45 +163,59 @@ void	rrr(t_stack *va)
 	rra(va);
 	rra(va);
 }
-void	ft_sort(t_stack *va,int	b)
-{
-	int	j;
 
-	j = va->index_stack_temp;
-	while (j >= 0)
+void indexing(t_stack *va)
+{
+
+	int	i;
+	int	j;
+	int	cnt;
+	int	*a;
+
+	i = 0;
+	j = 0;
+	cnt = 0;
+	a = malloc(sizeof(int) * va->index_stack);
+	while (i <= va->index_stack)
 	{
-		if (va->b[j] >= b)
+		j = 0;
+		while (j <= va->index_stack)
 		{
-			if (j == va->index_stack_temp)
+			if (i != j && va->a[j] < va->a[i])
 			{
-				va->index_stack += 1;
-				va->a[va->index_stack_temp] = va->b[j];
-			}
-			if (j < va->index_stack_temp)
-			{
-				if (j < (va->index_stack_temp / 2))
-				{
-					
-						rrb(va);
-						va->a[0] = va->b[j];
-					
-				}
-				
+				cnt++;
 			}
 			
+			j++;
 		}
-		
-		j--;
+		a[i] = cnt;
+		cnt = 0;
+		i++;
 	}
-	
+		print_table(a,i);
+}
+
+void ft_sort(t_stack *va)
+{
+	va->index_stack_temp = -1;
+	while (va->a[va->index_stack] >= 0)
+	{
+		printf("index frome sort = %d\n",va->index_stack);
+		if (va->a[va->index_stack] < va->moyen_stack)
+		{
+			printf("watari9");
+			printf("dakhelat\n");
+			push_b(va->b,va->a[va->index_stack],va);
+		}
+		va->index_stack--;
+	}
 }
 int main(int ac, char **av )
 {
 	t_stack variable;
 	int i;
 	int k;
-	int	b;
-	int	j;
+
 	ac = 0;
 	i = 1;
 	// if (ac < 2)
@@ -215,23 +229,17 @@ int main(int ac, char **av )
 	k = 0;
 	while (av[i])
 	{
-		variable.b[k++] = ft_atoi(av[i]);
+		variable.a[k++] = ft_atoi(av[i]);
 		i++;
 	}
-	variable.index_stack_temp = index_stack(k); 
-	j = variable.index_stack_temp;
-	b = 0;
-	while (j >= 0)
-	{
-		b += variable.b[j];
-		j--;
-	}
-	b = (b / k);
-	variable.index_stack = 0;
-	print_table(variable.b,variable.index_stack_temp+1);
-	printf("\n");
-	ft_sort(&variable,b);
-	print_table(variable.b,variable.index_stack_temp+1);
-	printf("\n");
-	print_table(variable.a,1);
+	variable.index_stack = index_stack(k);
+	indexing(&variable);
+	// printf("index before =%d\n",variable.index_stack);
+	// printf("index after =%d\n",variable.index_stack);
+	// printf("table a=%d\n",variable.a[3]);
+	variable.moyen_stack = ((k / 10) + 20);
+	// printf("moyen stack =%d\n",variable.moyen_stack);
+	// ft_sort(&variable);
+	// printf("\n");
+	// printf("table b = %d\n",variable.b[2]);
 }
