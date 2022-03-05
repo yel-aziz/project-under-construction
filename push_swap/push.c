@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 19:58:53 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/05 13:42:37 by yel-aziz         ###   ########.fr       */
+/*   Created: 2022/03/05 13:40:00 by yel-aziz          #+#    #+#             */
+/*   Updated: 2022/03/05 13:40:10 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include"push_swap.h"
 
-void print_table(int *t,int i)
+void push(int *a, int b, t_stack *va)
 {
-	int j = 0;
-	while (j < i )
-	{
-		printf("%d",t[j]);
-		j++;
-	}
+a[va->index_stack+1] = b;
+va->index_stack += 1;
 }
 
-int	index_stack(int len_argument)
+void push_b(int *b, int a, t_stack *va)
 {
-	int	index;
-
-	index = len_argument - 1;
-
-	return (index);
+	b[va->index_stack_temp + 1] = a;
+	va->index_stack_temp += 1;
 }
