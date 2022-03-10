@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:58:53 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/09 16:03:38 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:21:06 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,14 @@ int main(int ac, char **av)
 		va.a[k++] = ft_atoi(av[i++]);
 	}
 	va.index_stack = index_stack(k);
-	va.index_stack_temp = va.index_stack;
+	// va.index_stack_temp = va.index_stack;
 	va.moyen_stack = (k /10) + 20;
 	indexing(&va);
-	sort_index(&va);
-	printf("\n");
-	print_table(va.final,3);
+	printf("temp index =%d\n",va.index_stack_temp);
+	printf("index a = %d\n",va.index_stack);
+	sort_index(&va);	
 	find_big(&va);
-	printf("\n");
-	print_table(va.final,3);
-	printf("\n");
-	print_table(va.a,1);
-	printf("\n");
-	print_table(va.new,2);
-	printf("\n");
-	printf("i'm index_final = %d\n",va.index_stack_final);
-	printf("i'm index_stack = %d\n",va.index_stack);
-	printf("i'm index_temp = %d\n",va.index_stack_temp);
+	find_big(&va);
+
+
 }
