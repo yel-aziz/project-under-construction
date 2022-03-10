@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:58:53 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/10 16:21:06 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:58:14 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,36 @@ int main(int ac, char **av)
 	{
 		va.a[k++] = ft_atoi(av[i++]);
 	}
+	va.index_stack_temp = -1;
+	va.index_stack_final = -1;
 	va.index_stack = index_stack(k);
-	// va.index_stack_temp = va.index_stack;
 	va.moyen_stack = (k /10) + 20;
+	
+	printf("index stack a = %d\n ",va.index_stack);
+	printf("index stack b = %d\n ",va.index_stack_temp);
+	printf("index stack final = %d\n ",va.index_stack_final);
+	printf("stack a = ");
+	print_table(va.a,va.index_stack + 1);
+	printf("\nstack b = ");
+	print_table(va.b,va.index_stack_temp + 1);
+	printf("\nstack final = ");
+	print_table(va.final,va.index_stack_final + 1);
+	printf("\nstack new = ");
+	print_table(va.new,va.index_stack_temp + 1);
+	printf("\n|||||||after indexing|||||\n");
 	indexing(&va);
-	printf("temp index =%d\n",va.index_stack_temp);
-	printf("index a = %d\n",va.index_stack);
-	sort_index(&va);	
-	find_big(&va);
-	find_big(&va);
+	printf("index stack a = %d\n ",va.index_stack);
+	printf("index stack b = %d\n ",va.index_stack_temp);
+	printf("index stack final = %d\n ",va.index_stack_final);
+	printf("stack a = ");
+	print_table(va.a,va.index_stack + 1);
+	printf("\nstack b = ");
+	print_table(va.b,3);
+	printf("\nstack final = ");
+	print_table(va.final,va.index_stack_final + 1);
+	// printf("\nstack new = ");
+	// print_table(va.new,va.index_stack_temp + 1);
+
 
 
 }

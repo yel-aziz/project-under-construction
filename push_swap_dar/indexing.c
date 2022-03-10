@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:45:36 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/10 16:21:09 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:56:18 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void indexing(t_stack *va)
 	i = 0;
 	j = 0;
 	cnt = 0;
-	va->index_stack_temp = -1;
-	
+	// va->index_stack_temp = -1;
 	while (i <= va->index_stack)
 	{
 		j = 0;
@@ -32,11 +31,12 @@ void indexing(t_stack *va)
 			cnt++;
 			j++;
 		}
-		va->b[i] = cnt;
+		// va->b[i] = cnt;
+		// va->index_stack_temp += 1;
+		push_b(va->b,cnt,va);
 		cnt = 0;
 		i++;
 	}
-	va->index_stack_temp = i - 1;
 }
 
 void sort_index(t_stack *va)
@@ -81,20 +81,17 @@ void find_big(t_stack *va)
 	if(j == 0)
 	{
 		rrb(va);
-		va->index_stack += 1;
 		push(va->a,va->final[top],va);
 	}
 
 	if (j == top)
 	{
 		push(va->a,va->final[top],va);
-		va->index_stack += 1;
 	}
 
 	if ( va->index_stack_final == 0)
 	{
 		push(va->a,va->final[top],va);
-		va->index_stack += 1;
 	}
 
 	va->new = malloc(sizeof(int) * va->index_stack_final - 1);
