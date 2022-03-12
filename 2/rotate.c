@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 13:40:45 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/09 15:21:10 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:53:53 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void rb(t_stack *va)
 	int	i;
 
 	i = 0;
-	temp = malloc(sizeof(int) * va->index_stack_temp);
+	temp = malloc(sizeof(int) * (va->index_stack_temp + 1));
+	
 	while (va->index_stack_temp >= 0)
 	{
 		temp[i] = va->b[va->index_stack_temp];
@@ -53,7 +54,8 @@ void rb(t_stack *va)
 	while (i > 0)
 	{
 		va->b[va->index_stack_temp++] = temp[i--];
-	}	
+	}
+	va->index_stack_temp--;
 }
 
 void	rr(t_stack *v)

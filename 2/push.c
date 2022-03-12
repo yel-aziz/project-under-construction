@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 13:40:00 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/11 19:08:03 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:44:05 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void push_b(int *b, int a, t_stack *va)
 
 void push_final(int *final, int a, t_stack *va)
 {
-	final[va->index_stack_final + 1] =a;
+	final[va->index_stack_final + 1] = a;
 	va->index_stack_final += 1;
 }
