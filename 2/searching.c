@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   searching.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/05 13:40:00 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/13 22:26:47 by yel-aziz         ###   ########.fr       */
+/*   Created: 2022/03/13 21:23:43 by yel-aziz          #+#    #+#             */
+/*   Updated: 2022/03/13 21:28:26 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void push(int *a, int b, t_stack *va)
+int ft_search(int j)
 {
-	printf("pa\n");
-	va->index_stack += 1;
-	a[va->index_stack] = b;
-}
+	int	i;
+	t_stack va;
 
-void push_b(int *b, int a, t_stack *va)
-{
-	printf("pb\n");
-	va->index_stack_temp += 1;
-	b[va->index_stack_temp] = a;
-}
+	i = va.index_stack_temp;
 
-
-void push_final(int *final, int a, t_stack *va)
-{
-	printf("pa\n");
-	final[va->index_stack_final + 1] = a;
-	va->index_stack_final += 1;
+	while (va.b[i] != j)
+	{
+		i--;
+	}
+	return (i);
 }

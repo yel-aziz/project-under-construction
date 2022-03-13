@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 23:31:26 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/13 18:25:32 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/13 22:11:19 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@ void ft_sort(t_stack *va)
 {
 	int i;
 	int j;
+	int	s;
+	int	action;
+	
 	i = va->index_stack_temp;
 	j = va->index_stack_temp;
 	
+	
 	while (va->index_stack_temp >= 0)
 	{
+		action = (va->index_stack_temp / 2);
 		j = va->b[va->index_stack_temp];
+		i = va->index_stack_temp;
 		while (i >= 0)
 		{
 			if(va->b[i] > j)
@@ -31,17 +37,32 @@ void ft_sort(t_stack *va)
 			}
 				i--;
 		}
-		while (va->b[va->index_stack_temp] != j)
+		s = 0;
+		while (s <= va->index_stack_temp)
 		{
-			rb(va);
+			if(va->b[s] == j)
+			break;
+			s++;
 		}
-		push(va->a,va->b[va->index_stack_temp],va);
+		if(s <= action)
+		{
+			while (va->b[va->index_stack_temp] != j)
+			{
+				rrb(va);
+			}
+		}
+		else
+		{
+			while (va->b[va->index_stack_temp] != j)
+			{
+				rb(va);
+			}
+		}
+		
+		push(va->a,va->b[va->index_stack_temp],va); 
 		va->index_stack_temp--;
-		i = va->index_stack_temp;
+		
 	}
-	
-
-	printf("\nj = %d\n",j);
 
 }
 	

@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 13:40:45 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/12 21:53:53 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/13 22:11:11 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void ra(t_stack *va)
 
 void rb(t_stack *va)
 {
+	printf("rb\n");
 	int *temp;
 	int	i;
 
@@ -89,6 +90,38 @@ void rra(t_stack *va)
 	va->a[va->index_stack] = first[0];	
 }
 
+void rrb(t_stack *va)
+{
+	printf("rrb\n");
+	int	i;
+	int	*temp;
+	int	*first;
+
+	i = 0;
+	first = malloc(1);
+	temp = malloc(sizeof(int) * va->index_stack_temp);
+
+	while (va->index_stack_temp >= 0)
+	{
+		temp[i] = va->b[va->index_stack_temp--];
+		i++;
+	}
+	va->index_stack_temp += 1;
+	first[0] = temp[i - 1];
+	i = i - 2;
+	while (i >= 0)
+	{
+		va->b[va->index_stack_temp++] = temp[i--];
+	}
+	va->b[va->index_stack_temp] = first[0];	
+}
+
+void	rrr(t_stack *va)
+{
+	rra(va);
+	rra(va);
+}
+
 // void rrb(t_stack *va)
 // {
 // 	int	i;
@@ -97,49 +130,18 @@ void rra(t_stack *va)
 
 // 	i = 0;
 // 	first = malloc(1);
-// 	temp = malloc(sizeof(int) * va->index_stack_temp);
-
-// 	while (va->index_stack_temp >= 0)
+// 	temp = malloc(sizeof(int) * va->index_stack_final);
+// 	while (va->index_stack_final >= 0)
 // 	{
-// 		temp[i] = va->b[va->index_stack_temp--];
+// 		temp[i] = va->final[va->index_stack_final--];
 // 		i++;
 // 	}
-// 	va->index_stack_temp += 1;
+// 	va->index_stack_final += 1;
 // 	first[0] = temp[i - 1];
 // 	i = i - 2;
 // 	while (i >= 0)
 // 	{
-// 		va->b[va->index_stack_temp++] = temp[i--];
+// 		va->final[va->index_stack_final++] = temp[i--];
 // 	}
-// 	va->b[va->index_stack_temp] = first[0];	
+// 	va->final[va->index_stack_final] = first[0];	
 // }
-
-void	rrr(t_stack *va)
-{
-	rra(va);
-	rra(va);
-}
-
-void rrb(t_stack *va)
-{
-	int	i;
-	int	*temp;
-	int	*first;
-
-	i = 0;
-	first = malloc(1);
-	temp = malloc(sizeof(int) * va->index_stack_final);
-	while (va->index_stack_final >= 0)
-	{
-		temp[i] = va->final[va->index_stack_final--];
-		i++;
-	}
-	va->index_stack_final += 1;
-	first[0] = temp[i - 1];
-	i = i - 2;
-	while (i >= 0)
-	{
-		va->final[va->index_stack_final++] = temp[i--];
-	}
-	va->final[va->index_stack_final] = first[0];	
-}
