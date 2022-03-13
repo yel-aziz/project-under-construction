@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:45:36 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/12 22:23:31 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/13 15:23:31 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void sort_index(t_stack *va)
 	int cnt;
 
 	n = 1;
-
 	cnt = 0;
 	
 	va->index_stack_final = -1;
@@ -63,7 +62,16 @@ void sort_index(t_stack *va)
 		{
 			n++;
 		}
-	}	
+	}
+
+	while (va->index_stack_final >= 0)
+	{
+		push_b(va->b,va->final[va->index_stack_final],va);
+		va->index_stack_final--;
+	}
+	
+
+		
 }
 
 // void find_big(t_stack *va)

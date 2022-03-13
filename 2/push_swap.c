@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 19:58:53 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/12 22:20:54 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/13 15:37:31 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,49 +56,29 @@ int main(int ac, char **av)
 	va.index_stack_final = -1;
 	va.index_stack = index_stack(k);
 	va.moyen_stack = (k / 10) + 5;
-	
-	// printf("index stack a = %d\n ",va.index_stack);
-	// printf("index stack b = %d\n ",va.index_stack_temp);
-	// printf("index stack final = %d\n ",va.index_stack_final);
-	// printf("stack a = ");
-	// print_table(va.a,va.index_stack + 1);
-	// printf("\nstack b = ");
-	// print_table(va.b,va.index_stack_temp + 1);
-	// printf("\nstack final = ");
-	// print_table(va.final,va.index_stack_final + 1);
-	// printf("\nstack new = ");
-	// print_table(va.new,va.index_stack_temp + 1);
-	// printf("\n|||||||after indexing|||||\n");
-		// printf("index stack = %d\n",va.index_stack_temp);
-printf("index stack before b = %d\n ",va.index_stack_temp);
+
 	indexing(&va);
-		printf("\nstack b before rb\n= ");
-		print_table(va.b,va.index_stack_temp);
-		printf("\n");
-	//rb(&va);
-	// printf("index stack_temp = %d\n",va.index_stack_temp);
-	sort_index(&va);
-		// printf("index stack_temp after  = %d\n",va.index_stack_temp);
-	
-	// while (va.index_stack_final > 0)
-	// {
-	// 	find_big(&va);
-	// }
-	
-	
-	printf("index stack a = %d\n ",va.index_stack);
-	printf("index stack b = %d\n ",va.index_stack_temp);
-	printf("index stack final = %d\n ",va.index_stack_final);
-	printf("stack a = ");
-	print_table(va.a,3);
-	printf("\nstack b = ");
+	va.index_stack = -1;
+	printf("b from indexing = ");
 	print_table(va.b,va.index_stack_temp);
-	printf("\nstack final = ");
-	print_table(va.final,va.index_stack_final) ;
+	printf("\nindex b =%d",va.index_stack_temp);
+	printf("\na from indexing = ");
+	print_table(va.a,va.index_stack);
+	printf("\nindex a =%d",va.index_stack);
+	sort_index(&va);
+	printf("\nfinal from sort_index = ");
+	print_table(va.final,va.index_stack_final);
+	printf("\nb from sort_index = ");
+	print_table(va.b,va.index_stack_temp);
+	printf("\nindex b = %d",va.index_stack_temp);
+	ft_sort(&va);
+	printf("\na from ft_sort = ");
+	print_table(va.a,va.index_stack);
 	
-	// printf("\nstack new = ");
-	// print_table(va.new,va.index_stack_temp + 1);
 
 
+	
+
+	
 
 }

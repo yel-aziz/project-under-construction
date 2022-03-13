@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 20:35:42 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/12 13:46:55 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/12 23:32:16 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	push_final(int *final, int a, t_stack *va);
 void	sort_index(t_stack *va);
 void	find_big(t_stack *va);
 void	sb_swap(t_stack *va);
+void	ft_sort(t_stack *va);
 #endif
