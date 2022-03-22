@@ -5,100 +5,85 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 21:05:52 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/21 23:53:35 by yel-aziz         ###   ########.fr       */
+/*   Created: 2022/03/22 17:02:54 by yel-aziz          #+#    #+#             */
+/*   Updated: 2022/03/22 20:59:02 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
+#include "push_swap_bonus.h"
 
-void ft_checker_bonus(char *p)
+void ft_todo(char *p, t_stack *va)
 {
+	
 	if(strcmp(p,"rb") == 0)
-	printf("\nkbida kayn\n");
-}
-void	ft_putchar(char c)
-{
-	write(1,&c,1);
-}
-
-
-void	putstr(char *c)
-{
-	int	i;
-
-	i = 0;
-
-	while (c[i])
+	rb(va);
+	else if(strcmp(p,"ra") == 0)
+	ra(va);
+	if(strcmp(p,"pa") == 0)
 	{
-		ft_putchar(c[i++]);
+	pa(va->a,va->b[va->index_stack_temp], va);
+	va->index_stack_temp -= 1;
 	}
+	else if(strcmp(p,"pb") == 0)
+	{
+		pb(va->b,va->a[va->index_stack], va);
+		va->index_stack -= 1;
+	}
+	
+	if(strcmp(p,"rra") == 0)
+	rra(va);
+	else  if(strcmp(p,"rrb") == 0)
+	rrb(va);
 	
 }
 
-int	ft_atoi(const char *str)
+void	print_table(int	*a,int	k)
 {
 	int	i;
-	int	c;
-	int	res;
 
 	i = 0;
-	c = 1;
-	res = 0;
-	while (str[i] == '\t' || str[i] == ' ' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == '\n')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+
+	while (i <= k)
 	{
-		if (str[i] == '-')
-			c *= -1;
+		printf("| %d | ",a[i]);
 		i++;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	if (str[i] && (str[i] < '0' || str[i] > '9'))
-	{
-		putstr("Error\n");
-		exit(0);
-	}
-	return (res * c);
+	
 }
-
-
 
 int main(int ac, char **av)
 {
-	char	*p;
-	int		s;
-	int		i;
-	int		*a;
+	t_stack	va;
+	char	*c;
 	int		k;
+	int		i;
 
+	ac = 0;
 	i = 1;
 	k = 0;
-
+	
 	while (av[i])
-	{
 		i++;
-	}
-	a = malloc(sizeof(int) * i);
+	va.a = malloc(sizeof(int) * i + 1);
+	va.b = malloc(sizeof(int) * i + 1);
 	i = 1;
 	while (av[i])
 	{
-		a[k++] = ft_atoi(av[i]);
-		i++;
+		va.a[k++] = ft_atoi(av[i++]);
 	}
+	va.index_stack = (k - 1);
+	va.index_stack_temp = -1;
+	print_table(va.a,va.index_stack);
+	printf("\n");
 	
-	while ((s = read(0,p,2)) > 0)
-	{
-		p[s]= 0;
-		ft_checker_bonus(p);
+	
+	c = "\0";
+	while (c != NULL)
+	{		
+		ft_todo(c, &va);
+		c = get_next_line(0);
 	}
-
+	print_table(va.b,va.index_stack_temp);
+	
+	
 }
