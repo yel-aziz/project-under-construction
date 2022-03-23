@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:27:10 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/23 23:03:45 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/24 00:19:25 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,13 @@ void med_sort(t_stack *va)
 	push_b(va->b, va->a[va->index_stack], va);
 	va->index_stack--;
 	action--;
+	
 	}
 	ft_small(va);
-	print_table(va->a,va->index_stack);
+	push(va->a, va->b[va->index_stack_temp],va);
+	push(va->a, va->b[va->index_stack_temp-1],va);
+	print_table(va->a,va->index_stack);	
 	printf("\n");
 	print_table(va->b,va->index_stack_temp);
+	
 }
