@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 23:31:26 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/19 16:14:08 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/22 21:18:37 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,47 +21,47 @@ void ft_sort(t_stack *va)
 	int	s;
 	int	action;
 
-	i = va->index_stack;
-	j = va->index_stack;
+	i = va->index_stack_temp;
+	j = va->index_stack_temp;
 
-	while (va->index_stack >= 0)
+	while (va->index_stack_temp >= 0)
 	{
-		action = (va->index_stack / 2);
-		i = va->index_stack;
-		j = va->a[va->index_stack];
+		action = (va->index_stack_temp / 2);
+		i = va->index_stack_temp;
+		j = va->b[va->index_stack_temp];
 
 		while (i >= 0)
 		{
-			if(va->a[i] > j)
+			if(va->b[i] > j)
 			{
-				j = va->a[i];
+				j = va->b[i];
 			}
 			i--;
 	}
 	s = 0;
-	while (s <= va->index_stack)
+	while (s <= va->index_stack_temp)
 	{
-		if(va->a[s] == j)
+		if(va->b[s] == j)
 		break;
 		s++;
 	}
 	
 	if(s <= action)
 	{
-		while (va->a[va->index_stack] != j)
+		while (va->b[va->index_stack_temp] != j)
 		{
-			rra(va);
+			rrb(va);
 		}
 		
 	}
 	else{
-		while (va->a[va->index_stack] != j)
+		while (va->b[va->index_stack_temp] != j)
 		{
-			ra(va);
+			rb(va);
 		}
 	}
-	push_b(va->b,va->a[va->index_stack],va);
-	va->index_stack--;
+	push(va->a,va->b[va->index_stack_temp],va);
+	va->index_stack_temp--;
 	}
 }
 

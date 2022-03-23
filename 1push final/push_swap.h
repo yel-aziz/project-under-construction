@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 20:35:42 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/20 20:47:15 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:02:08 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	push_bb(int *b, int a, t_stack *va);
 void	ft_checker(t_stack *va);
 void	putstr(char *c);
 int		checkme(t_stack *va);
+void	print_table(int	*a,int	k);
 #endif

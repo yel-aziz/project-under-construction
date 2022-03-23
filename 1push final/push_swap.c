@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:03:27 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/03/22 21:01:04 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:35:09 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,26 @@ int	index_stack(int len_argument)
 	return (index);
 }
 
+void	print_table(int	*a,int	k)
+{
+	int	i;
+
+	i = 0;
+
+	while (i <= k)
+	{
+		printf("| %d | ",a[i]);
+		i++;
+	}
+	
+}
+
 int main(int ac, char **av)
 {
 	t_stack va;
 	int	i;
 	int	k;
-	int	f;
+	//int	f;
 	char *p;
 
 	p = malloc(10);
@@ -46,23 +60,16 @@ int main(int ac, char **av)
 		va.a[k++] = ft_atoi(av[i++]);
 	}
 
-	
-	if(k == 1)
-	{
-		exit(0);
-	}
+
 	va.index_stack_temp = -1;
 	va.index_stack_final = -1;
 	va.index_stack = index_stack(k);
 	va.moyen_stack = (k / 10) + 8;
-	 f = checkme(&va);
-	 ft_checker(&va);
-	 if(f == 0)
-	 {
+
 		indexing(&va);
-		va.index_stack = -1;
-		sort_index(&va);
-		ft_sort(&va);
-	 }
+		 sort_index(&va);
+		 ft_sort(&va);
+		// print_table(va.a,va.index_stack);
+		
 
 }
