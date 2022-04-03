@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:17:42 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/03 15:24:47 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:55:22 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ void	rra(t_stack *va)
 			va->a[va->index_stack++] = temp[i--];
 		}
 		va->a[va->index_stack] = first[0];
-		}
+		free(first);
+		free(temp);
+	}
 }
 
 void	rrb(t_stack *va)

@@ -6,13 +6,13 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 16:54:32 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/03 15:36:28 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/03 22:03:25 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void ft_action(t_stack *va, char *gnt)
+void ft_action(t_stack *va, char *gnt, int *tmp)
 {
 	if (ft_strcmp(gnt,"rb\n") == 0)
 		rb(va);
@@ -40,26 +40,19 @@ void ft_action(t_stack *va, char *gnt)
 	sa(va);
 	else if (ft_strcmp(gnt,"sb\n") == 0)
 	sb(va);
+	else if (ft_strcmp(gnt,"ss\n") == 0)
+	ss(va);
 	else
 	{
 		ft_putstr("Eroor\n");
+		free(tmp);
+		free(va->a);
+		free(va->b);
 		exit(0);
 	}
 }
 
-void print_table(int *tab, int len)
-{
-	int i;
-
-	i = 0;
-	while (i < len)
-	{
-		printf("%d\n",tab[i++]);
-	}
-
-}
-
-void	ft_checker(t_stack *va)
+void	ft_checker(t_stack *va, int	*tmp)
 {
 	int	i;
 	int	j;
@@ -74,6 +67,7 @@ void	ft_checker(t_stack *va)
 			if (va->a[i] == va->a[j])
 			{
 				ft_putstr("Error\n");
+				free(tmp);
 				free(va->a);
 				free(va->b);
 				exit(0);
@@ -82,4 +76,10 @@ void	ft_checker(t_stack *va)
 		}
 		i++;
 	}
+}
+
+void ss(t_stack *va)
+{
+	sa(va);
+	sb(va);
 }

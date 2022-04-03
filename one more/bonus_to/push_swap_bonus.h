@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:03:17 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/03 15:36:15 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/03 21:45:02 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ void			rrb(t_stack *va);
 long long		ft_atoi(const char *str);
 int				ft_strlen(const char *p);
 int				ft_strcmp(const char *s1, const char *s2);
-void			ft_action(t_stack *va, char *gnt);
+void			ft_action(t_stack *va, char *gnt, int *tmp);
 void			rr(t_stack *va);
 void			rrr(t_stack *va);
 int				is_sorted(t_stack *va);
-void			last_check(t_stack *va);
+void			last_check(t_stack *va, int	*tmp);
 void			print_table(int *tab, int len);
 void			rev_tab(t_stack *va,int i);
 void			sb(t_stack *va);
 void			sa(t_stack *va);
-void			ft_checker(t_stack *va);
+void			ft_checker(t_stack *va, int	*tmp);
+void			ft_free_split(char **spl);
+void			ss(t_stack *va);
 #endif
