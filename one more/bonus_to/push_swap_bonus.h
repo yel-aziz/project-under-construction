@@ -6,13 +6,17 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:03:17 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/03 21:45:02 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/04 00:06:07 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
-# define PUSH_SWAP_H
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include "get_next_line.h"
 
 typedef struct va
 {
@@ -22,13 +26,7 @@ typedef struct va
 	int	index_stack_temp;
 }t_stack;
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "get_next_line.h"
-
-
-char			*ft_strjoin(char  *s1, char const *s2);
+char			*ft_strjoin(char	*s1, char	*s2);
 char			*ft_strdup(const char *s1);
 char			**ft_split(char const *s, char c);
 void			ft_putchar(char c);
@@ -48,10 +46,12 @@ void			rrr(t_stack *va);
 int				is_sorted(t_stack *va);
 void			last_check(t_stack *va, int	*tmp);
 void			print_table(int *tab, int len);
-void			rev_tab(t_stack *va,int i);
+void			rev_tab(t_stack *va, int i);
 void			sb(t_stack *va);
 void			sa(t_stack *va);
 void			ft_checker(t_stack *va, int	*tmp);
 void			ft_free_split(char **spl);
 void			ss(t_stack *va);
+void			malloc_join(char *s1, char *s2);
+
 #endif

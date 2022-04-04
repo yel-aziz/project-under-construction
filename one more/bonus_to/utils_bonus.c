@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:09:56 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/02 19:04:12 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/03 23:58:49 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int	ft_strlen(const char *p)
 	int	i;
 
 	i = 0;
+	if (!p)
+		return (0);
 	while (p[i] != '\0')
 		i++;
 	return (i);
-} 
+}
 
-char	*ft_strjoin(char  *s1, char const *s2)
+char	*ft_strjoin(char	*s1, char	*s2)
 {
 	int		i;
 	int		j;
@@ -32,7 +34,7 @@ char	*ft_strjoin(char  *s1, char const *s2)
 	j = 0;
 	if (!s2)
 		return (0);
-	if(!s1)
+	if (!s1)
 	{
 		s1 = malloc(sizeof(char) * 1);
 		s1[0] = '\0';
@@ -41,18 +43,12 @@ char	*ft_strjoin(char  *s1, char const *s2)
 	if (!canca)
 		return (NULL);
 	while (s1[i])
-	{
 		canca[j++] = s1[i++];
-	}
 	i = 0;
 	while (s2[i])
-	{
-		canca[j] = s2[i];
-		i++;
-		j++;
-	}
+		canca[j++] = s2[i++];
 	canca[j] = '\0';
-	free(s1);
+	free (s1);
 	return (canca);
 }
 
@@ -89,29 +85,4 @@ void	ft_putstr(char *tab)
 		ft_putchar(tab[i]);
 		i++;
 	}
-	
-}
-
-int	is_sorted(t_stack *va)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-
-	while (i < va->index_stack)
-	{
-		j = i +1;
-		while (j <= va->index_stack)
-		{
-			if(va->a[i] > va->a[j])
-			{
-				j++;
-			}
-			else
-			return(1);
-		}
-		i++;
-	}
-	return(0);
 }

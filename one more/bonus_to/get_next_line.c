@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:24:45 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/02 17:43:40 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/04 00:19:15 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_change_text(char *text)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*s;
 
 	i = 0;
@@ -42,8 +42,8 @@ char	*ft_change_text(char *text)
 
 char	*ft_just_line(char *text)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*b;
 
 	j = 0;
