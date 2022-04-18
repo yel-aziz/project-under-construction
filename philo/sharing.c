@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 23:12:06 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/18 03:28:11 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/18 03:55:27 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void ft_checking(int c, int *tab)
 
 void    ft_sharing(int *tab, routine *rt)
 {
+    if(tab[0] > 200 || tab[1] < 68 || tab[2] < 68 || tab[3] < 68)
+        exit(0);
     rt->number_of_philosophers = tab[0];
     rt->time_to_die = tab[1];
     rt->time_to_eat = tab[2];
