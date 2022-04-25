@@ -1,6 +1,6 @@
 NAME = philosophers
 
-SRCS = philo_main.c utils_one.c sharing.c   
+SRCS = philo_main.c utils_one.c sharing.c  parcing.c is_dead.c 
 
 OBJ = $(SRCS:.c=.o)
 
