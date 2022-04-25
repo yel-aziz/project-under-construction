@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 20:45:03 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/24 21:29:23 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/25 23:05:23 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/time.h>
 
 typedef struct rot
 {
@@ -29,16 +30,24 @@ typedef struct rot
 
 typedef struct philosopher
 {
-    pthread_mutex_t *mtx;
     int             id;
-    pthread_mutex_t left_fork;
-    pthread_mutex_t right_fork;
+    pthread_mutex_t *mtx;
     routine *rot;
-}thread;
+    int             start_of;
+}philosopher;
+
+typedef struct times
+{
+   int  second;
+   int  millseconde;
+}stemp;
+
 
 int     ft_atoi(const char *str);
 void    ft_checking(int c, int *tab);
 void    ft_sharing(int *tab, routine *rt);
 void    ft_parcing(char **av, int ac, routine *va);
 void    ft_is_dead(routine *va);
+int     time_stamp();
+int        realy_time(philosopher *va);
 #endif

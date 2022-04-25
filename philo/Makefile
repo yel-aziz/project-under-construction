@@ -6,7 +6,8 @@ OBJ = $(SRCS:.c=.o)
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+# FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 all : $(NAME)
 

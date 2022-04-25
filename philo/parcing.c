@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 23:33:32 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/04/22 23:36:17 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/04/25 23:13:13 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,28 @@ void ft_parcing(char **av, int ac, routine *va)
     }
     k--;
     ft_sharing(tab, va);
+}
+
+int    time_stamp()
+{
+    int sec;
+    int msec;
+    int fraction;
+    struct  timeval time;
+
+    sec = 0;
+    msec = 0;
+    gettimeofday(&time, NULL);
+    sec = (time.tv_sec / 1000);
+    msec = (time.tv_usec * 1000);
+    fraction = sec + msec;
+    return (fraction);
+}
+
+int realy_time(philosopher *va)
+{
+    int set;
+
+    set =  time_stamp() - va->start_of;
+    return(set);
 }
