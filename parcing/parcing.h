@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:50:27 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/05/22 19:10:01 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/15 18:25:59 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,13 @@ size_t	ft_strlen(char *p);
 void	ft_putstr_fd(char *s, int fd);
 void	get_line(int fd, int fd_direction);
 void	ft_putchar_fd(char c, int fd);
+char	**ft_split(char const *s, char c);
+char	*ft_strtrim(char const *s1, char const *set);
+int    ft_valid_parame(char    *cmd);
+void    ft_rederiction(char *cmd_byreadline);
+char *   traitment(char  *cmd);
+void    ft_lastone(char **splited, int i);
+char *   traitment_layer_too(char  *cmd);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif

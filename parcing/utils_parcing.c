@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:51:21 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/05/20 18:49:32 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:53:47 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,5 @@ int	ft_strcmp(char *s1,char *s2)
 			return (1);
 		i++;
 	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

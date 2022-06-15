@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 18:44:22 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/05/22 18:44:51 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/12 00:12:04 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,4 @@ char	*get_next_line(int fd)
 	text = ft_change_text(text);
 	return (line);
 }
+

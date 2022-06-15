@@ -1,6 +1,6 @@
 NAME = parcing
 
-SRCS = parcing_main.c utils_parcing.c get_next_line.c gn_utils.c
+SRCS = parcing_main.c utils_parcing.c get_next_line.c gn_utils.c valid_parame.c parcing.c
 
 OBJS = $(SRCS:.c=.o)
 
