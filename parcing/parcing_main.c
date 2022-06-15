@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:50:13 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/15 18:26:42 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:20:23 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,19 @@ void    ft_open(char    **str, int   i)
 {
     int fd;
     int j;
+    char    *name;
 
     j = 0;
     
+     i -= 1;
     while (j < i)
     {
         if (ft_strcmp(str[0],"cat") == 0 )
             j++;
         if (ft_strcmp(str[j],">") == 0 || ft_strcmp(str[j],">>") == 0 || ft_strcmp(str[j],"<") == 0 || ft_strcmp(str[j],"<<") == 0)
             j++;
-        
-        fd = open(str[j++],O_CREAT, 0666);
+        name = ft_strtrim(str[j++],"\"");
+        fd = open(name,O_CREAT, 0666);
     }
 }
 
@@ -86,12 +88,14 @@ void    ft_open(char    **str, int   i)
 
 void    ft_lastone(char **splited, int i)
 {
-    int fd;
-       
+    int     fd;
+    char    *name;
+    
     if (ft_strcmp(">", splited[i - 2]) == 0)
     {
         ft_open(splited, i);
-        fd = open(splited[i - 1], O_RDWR|O_CREAT|O_TRUNC, 0666);
+        name = ft_strtrim(splited[i - 1],"\"");
+        fd = open(name, O_RDWR|O_CREAT|O_TRUNC, 0666);
         if(ft_strcmp("cat",splited[0]) == 0)
         get_line(0, fd);
         
@@ -99,14 +103,16 @@ void    ft_lastone(char **splited, int i)
     else if (ft_strcmp(">>", splited[i - 2]) == 0)
     {
         ft_open(splited, i);
-        fd = open(splited[i - 1], O_RDWR|O_APPEND, 0666);
+        name = ft_strtrim(splited[i - 1],"\"");
+        fd = open(name, O_RDWR|O_APPEND, 0666);
         if(ft_strcmp("cat",splited[0]) == 0)
         get_line(0, fd);
     }
     else if (ft_strcmp("<<", splited[i - 2]) == 0)
     {
         ft_open(splited, i);
-        fd = open(splited[i - 1],O_RDWR|O_CREAT|O_TRUNC, 0666);
+        name = ft_strtrim(splited[i - 1],"\"");
+        fd = open(name,O_RDWR|O_CREAT|O_TRUNC, 0666);
         get_line_delimiter(0, fd, splited[i - 1]);
     }
 }
@@ -115,14 +121,15 @@ int main()
 {
     char *cmd;
     char *tab;
+    char    **spl;
     
     cmd = readline("\033[0;36m myShell$> \033[0m");
+
     if(ft_valid_parame(cmd) == 0)
     {
-        tab = ft_strtrim(cmd, "\"");
-        // tab =  traitment(cmd);
-        // tab = traitment_layer_too(tab);
-        printf("%s",tab);
-        // ft_rederiction(tab);
+        
+        tab =  traitment(cmd);
+        tab = traitment_layer_too(tab);
+        ft_rederiction(tab);
     }
 }

@@ -6,13 +6,13 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:51:21 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/10 23:53:47 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:10:21 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parcing.h"
 
-int	countword(char const *s, char c)
+int	countword(char  *s, char c)
 {
 	int		i;
 	int		count;
@@ -32,7 +32,7 @@ int	countword(char const *s, char c)
 	return (count);
 }
 
-int	lenword(char const *s, char c)
+int	lenword(char  *s, char c)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ int	lenword(char const *s, char c)
 	return (i);
 }
 
-char const	*skipspace(char const *s, char c)
+char 	*skipspace(char  *s, char c)
 {
 	while (*s && *s == c)
 		s++;
@@ -55,7 +55,7 @@ char	**ft_free(char **ar)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char  *s, char c)
 {
 	char	**ar;
 	int		len;

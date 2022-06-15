@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 19:10:28 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/15 18:27:52 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:20:12 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	fromfirst(char  *set, char  *s1)
 	i = 0;
 	while (s1[i])
 	{
-		if (ft_strchr(set, s1[i]) == NULL)
+		if (ft_strchr(set, s1[i]) == 0)
 		{
 			break ;
 		}
@@ -59,7 +59,7 @@ int	fromlast(char  *set, char  *s1)
 	end_s1 = ft_strlen(s1)-1;
 	while (end_s1 >= 0)
 	{
-		if (ft_strchr(set, s1[end_s1]) == NULL)
+		if (ft_strchr(set, s1[end_s1]) == 0)
 			break ;
 		end_s1--;
 	}
@@ -74,7 +74,7 @@ char	*ft_strtrim(char  *s1, char  *set)
 	size_t	index;
 
 	if (!set)
-		return (ft_strdup(s1));
+		return (NULL);
 	if (!s1)
 		return (NULL);
 	i = 0;

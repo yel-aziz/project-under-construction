@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:42:58 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/15 18:08:55 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/15 22:08:54 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void    ft_rederiction(char *cmd_byreadline)
     char    **splited;
     int     fd;
     int     i;
+    char    *name;
 
     i = 0;
-    splited = ft_split(cmd_byreadline, ' ');
+    splited = ft_split(cmd_byreadline,' ');
      while (splited[i])
         i++;
     ft_lastone(splited, i);
