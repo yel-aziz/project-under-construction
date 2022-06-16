@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:51:21 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/16 00:03:54 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/16 05:22:25 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,18 @@ int	ft_strcmp(char *s1, char  *s2)
 		i++;
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	ft_strcmp_delimiteur(char *s1, char  *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while ((unsigned char)s1[i] && (unsigned char)s2[i])
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:50:27 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/15 23:48:17 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/16 05:19:20 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void    ft_lastone(char **splited, int i);
 char *   traitment_layer_too(char  *cmd);
 char	*ft_strtrim(char  *s1, char  *set);
 char	*ft_remove_qout(char *cmd);
+int	ft_strcmp_delimiteur(char *s1, char  *s2);
 
 #endif

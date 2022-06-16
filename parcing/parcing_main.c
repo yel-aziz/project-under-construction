@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:50:13 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/16 00:13:40 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/16 05:20:31 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ void	get_line_delimiter(int fd, int fd_direction, char *delimiter)
 	while (1) 
 	{
 		line = get_next_line(0);
-        delimiter = ft_strtrim(delimiter, "\n");
-        printf("%s\n",delimiter);
-        if (!line || !ft_strcmp(line, delimiter))
+        if (!line || !ft_strcmp_delimiteur(line, delimiter))
            exit (0); 
         ft_putstr_fd(line, fd_direction);
 	}
