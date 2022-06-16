@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:50:27 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/15 22:10:00 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:48:17 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <readline/history.h>
 
 char	**ft_split(char  *s, char c);
-int     ft_strcmp( char *s1,  char *s2);
+int     ft_strcmp( char *s1,  char  *s2);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
 int     ft_strchr(char *s, char c);

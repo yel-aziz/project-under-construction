@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 17:50:13 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/15 22:20:23 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/16 00:13:40 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ void	get_line_delimiter(int fd, int fd_direction, char *delimiter)
 {
 	char	*line;
 
-	while (line != NULL) 
+	while (1) 
 	{
 		line = get_next_line(0);
-        if (ft_strcmp(line, delimiter) == 0)
-           exit (0);
-           
+        delimiter = ft_strtrim(delimiter, "\n");
+        printf("%s\n",delimiter);
+        if (!line || !ft_strcmp(line, delimiter))
+           exit (0); 
         ft_putstr_fd(line, fd_direction);
 	}
+    close(fd_direction);
     exit(0);
 }
 
@@ -91,24 +93,26 @@ void    ft_lastone(char **splited, int i)
     int     fd;
     char    *name;
     
-    if (ft_strcmp(">", splited[i - 2]) == 0)
-    {
-        ft_open(splited, i);
-        name = ft_strtrim(splited[i - 1],"\"");
-        fd = open(name, O_RDWR|O_CREAT|O_TRUNC, 0666);
-        if(ft_strcmp("cat",splited[0]) == 0)
-        get_line(0, fd);
+    // if (ft_strcmp(">", splited[i - 2]) == 0)
+    // {
+    //     printf("3adi 1");
+    //     ft_open(splited, i);
+    //     name = ft_strtrim(splited[i - 1],"\"");
+    //     fd = open(name, O_RDWR|O_CREAT|O_TRUNC, 0666);
+    //     if(ft_strcmp("cat",splited[0]) == 0)
+    //     get_line(0, fd);
         
-    }
-    else if (ft_strcmp(">>", splited[i - 2]) == 0)
-    {
-        ft_open(splited, i);
-        name = ft_strtrim(splited[i - 1],"\"");
-        fd = open(name, O_RDWR|O_APPEND, 0666);
-        if(ft_strcmp("cat",splited[0]) == 0)
-        get_line(0, fd);
-    }
-    else if (ft_strcmp("<<", splited[i - 2]) == 0)
+    // }
+    // else if (ft_strcmp(">>", splited[i - 2]) == 0)
+    // {
+    //     printf("3adi 2");
+    //     ft_open(splited, i);
+    //     name = ft_strtrim(splited[i - 1],"\"");
+    //     fd = open(name, O_RDWR|O_APPEND, 0666);
+    //     if(ft_strcmp("cat",splited[0]) == 0)
+    //     get_line(0, fd);
+    // }
+    if (ft_strcmp("<<", splited[i - 2]) == 0)
     {
         ft_open(splited, i);
         name = ft_strtrim(splited[i - 1],"\"");
@@ -127,7 +131,6 @@ int main()
 
     if(ft_valid_parame(cmd) == 0)
     {
-        
         tab =  traitment(cmd);
         tab = traitment_layer_too(tab);
         ft_rederiction(tab);
