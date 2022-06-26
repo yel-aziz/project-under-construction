@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:42:58 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/24 21:47:27 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/26 01:26:45 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void    ft_rederiction(char *cmd_byreadline)
      while (splited[i])
         i++;
         ft_exec_fd(splited);
-    //ft_lastone(splited, i);
 }
 
 char *   traitment(char  *cmd)

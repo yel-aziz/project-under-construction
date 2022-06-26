@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 19:10:28 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/24 21:40:29 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/26 01:26:57 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,21 +91,3 @@ char	*ft_strtrim(char  *s1, char  *set)
 	ptr[index] = '\0';
 	return (ptr);
 }
-
-// char	*ft_strdup(char *s1)
-// {
-// 	char	*re;
-// 	int		i;
-
-// 	i = 0;
-// 	while (s1[i])
-// 		i++;
-// 	re = (char *)malloc((i + 1) * sizeof(char));
-// 	if (!re)
-// 		return (NULL);
-// 	i = -1;
-// 	while (s1[++i])
-// 		re[i] = s1[i];
-// 	re[i] = '\0';
-// 	return (re);
-// }
