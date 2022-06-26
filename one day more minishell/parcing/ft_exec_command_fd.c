@@ -6,7 +6,7 @@
 /*   By: yel-aziz <yel-aziz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 21:08:55 by yel-aziz          #+#    #+#             */
-/*   Updated: 2022/06/25 00:26:44 by yel-aziz         ###   ########.fr       */
+/*   Updated: 2022/06/26 01:17:18 by yel-aziz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,52 @@ char    *ft_find_cmd(char    **splited)
             break;
             cmd = ft_strjoin(cmd, splited[i]);
             cmd = ft_strjoin(cmd, " ");
-
         i++;
     }
     return(cmd);
 }
+
+void    ft_heardoc_init(char    **splited)
+{
+    int     i;
+    int     fd;
+    char    *line;
+    char    *name;
+    char    *to_right;
     
+    while (splited[i])
+        i++;
+        line = ft_strdup(" ");
+        to_right = ft_strdup(" ");
+    if(ft_strcmp(splited[0],"<<") == 0)
+    {
+        while (line !=NULL)
+        {
+           if(ft_strcmp_delimiteur(line, splited[1]) == 0)
+            break;
+            line = get_next_line(0);
+            to_right = ft_strjoin(to_right, line);
+        }
+        if(splited[2] != NULL)
+        {
+            ft_open(splited,i);
+            if(ft_strcmp(splited[i - 2], ">") == 0)
+            {
+                name = ft_strtrim(splited[i - 1], "\"");
+                name = ft_strtrim(splited[i - 1], "\"");
+                fd = open(name, O_RDWR|O_CREAT|O_TRUNC, 0644);
+            }
+            else if (ft_strcmp(splited[i - 2], ">>") == 0)
+            {
+                name = ft_strtrim(splited[i - 1], "\"");
+                name = ft_strtrim(splited[i - 1], "\"");
+                fd = open(name, O_RDWR|O_CREAT|O_APPEND, 0644);
+            }
+        ft_putstr_fd(to_right,fd);
+        }
+    }
+}
+
 void    ft_exec_fd(char **splited)
 {
     char    *command;
@@ -46,17 +86,13 @@ void    ft_exec_fd(char **splited)
 
     while (splited[i])
         i++;
-    
-        if(((ft_strcmp(splited[0],">") != 0) && (ft_strcmp(splited[0],">>") != 0) && (ft_strcmp(splited[0],"<") != 0 )&& (ft_strcmp(splited[0],"<<") != 0))
-        && ((ft_strcmp(splited[1],">") != 0) && (ft_strcmp(splited[1],">>") != 0) && (ft_strcmp(splited[1],"<") != 0) && (ft_strcmp(splited[1],"<<") != 0)))
+        if(ft_strcmp(splited[0],"<<") == 0)
+        ft_heardoc_init(splited);
+        else if(ft_strcmp(splited[1],">") != 0 && ft_strcmp(splited[1],">>") != 0 && ft_strcmp(splited[1],"<") != 0 && ft_strcmp(splited[1],"<<") != 0 && ft_strcmp(splited[1],">") != 0 && ft_strcmp(splited[1],">>") != 0 && ft_strcmp(splited[1],"<") != 0 && ft_strcmp(splited[1],"<<") != 0)
         {
+            printf("fiirst\n");
             i = 0;
             command = ft_find_cmd(splited);
-            // printf("cmd == %s\n",command);
-            // command = ft_strdup(" ");
-            // command = ft_strjoin(command, splited[0]);
-            // command = ft_strjoin(command, " ");
-            // command = ft_strjoin(command, splited[1]);
             while (splited[i])
             i++;
             ft_open(splited,i);
@@ -75,7 +111,7 @@ void    ft_exec_fd(char **splited)
             }
             wait(NULL);
         }
-        else
+        else if(ft_strcmp(splited[1],">") == 0 || ft_strcmp(splited[1],">>") == 0 || ft_strcmp(splited[1],"<") == 0 || ft_strcmp(splited[1],"<<") == 0)
         {
             i = 0;
             while (splited[i])
@@ -87,8 +123,10 @@ void    ft_exec_fd(char **splited)
                 break;
                 j++;
             }
-            if(splited[j + 2] == NULL)
+            ft_open(splited,i);
+            if(splited[j] && splited[j + 2] == NULL && ft_strcmp(splited[j], "<") == 0)
             {
+                command = ft_find_cmd(splited);
                 ft_open(splited,i);
                 name = ft_strtrim(splited[j + 1], "\'");
                 name = ft_strtrim(splited[j + 1], "\"");
@@ -97,14 +135,16 @@ void    ft_exec_fd(char **splited)
                 if(pid == 0)
                 {
                     dup2(fd_inp,STDIN_FILENO);
-                    execute_command(splited[0]);
+                    execute_command(command);
                     close(fd_inp);
                     exit(0);
                 }
+                close(fd_inp);
                 wait(NULL);
             }
-            else if (splited[j + 2] != NULL)
+            else if (splited[j] && splited[j + 2] != NULL && ft_strcmp(splited[j], "<") == 0)
             {
+                command = ft_find_cmd(splited);
                 ft_open(splited,i);
                 name = ft_strtrim(splited[j + 1], "\'");
                 name = ft_strtrim(splited[j + 1], "\"");
@@ -119,13 +159,37 @@ void    ft_exec_fd(char **splited)
                 {
                     dup2(fd_inp,STDIN_FILENO);
                     dup2(fd,STDOUT_FILENO);
-                    execute_command(splited[0]);
+                    execute_command(command);
                     close(fd);
                     close(fd_inp);
                     exit(0);
                 }
+                close(fd);
+                close(fd_inp);
                 wait(NULL);
             }
-            
+            else
+            {
+                i = 0;
+                command = ft_find_cmd(splited);
+                while (splited[i])
+                i++;
+                ft_open(splited,i);
+                name = ft_strtrim(splited[i - 1], "\'");
+                name = ft_strtrim(splited[i - 1], "\"");
+                if(ft_strcmp(splited[i - 2], ">") == 0)
+                fd = open(name, O_CREAT|O_RDWR|O_TRUNC, 0644);
+                else if(ft_strcmp(splited[i - 2], ">>") == 0)
+                fd = open(name, O_CREAT|O_RDWR|O_APPEND, 0644);
+                int pid = fork();
+                if(pid == 0)
+                {
+                    dup2(fd,STDOUT_FILENO);
+                    execute_command(command);
+                    exit(0);
+                }
+                wait(NULL);
+            }
         }
+            
 }
